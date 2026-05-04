@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Ehtesham Alam — Digital Marketing Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #060608;
+    --surface: #0e0e12;
+    --surface2: #16161c;
+    --gold: #c9a84c;
+    --gold-light: #e8c97e;
+    --gold-dim: #7a6330;
+    --text: #ede8dd;
+    --muted: #7a7570;
+    --border: rgba(201,168,76,0.15);
+    --border2: rgba(201,168,76,0.08);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 18px 48px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(6,6,8,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600; letter-spacing: 0.05em;
+    color: var(--gold-light); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 13px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid var(--border);
+    padding: 6px 14px; border-radius: 2px; margin-bottom: 28px;
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 78px);
+    font-weight: 300; line-height: 1.08;
+    margin-bottom: 24px; letter-spacing: -0.01em;
+  }
+  h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-desc {
+    color: var(--muted); font-size: 16px; line-height: 1.8;
+    max-width: 440px; margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold); color: #060608;
+    padding: 13px 30px; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--border); color: var(--text);
+    padding: 13px 30px; font-size: 13px; font-weight: 400;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: border-color 0.25s, color 0.25s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* stats panel */
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px; overflow: hidden;
+  }
+  .stat-box {
+    background: var(--surface);
+    padding: 36px 28px;
+  }
+  .stat-box:hover { background: var(--surface2); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px; font-weight: 600;
+    color: var(--gold-light); line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label { font-size: 12px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 100px 48px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300; line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .section-line {
+    width: 60px; height: 1px; background: var(--gold-dim);
+    margin-bottom: 56px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--surface); border-top: 1px solid var(--border2); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .about-text p { color: var(--muted); font-size: 16px; margin-bottom: 20px; line-height: 1.85; }
+  .about-contact { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
+  .contact-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--muted); }
+  .contact-item a { color: var(--gold); text-decoration: none; }
+  .contact-item a:hover { color: var(--gold-light); text-decoration: underline; }
+  .contact-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-dim); flex-shrink: 0; }
+
+  /* skills */
+  .skills-panel { }
+  .skills-cat { margin-bottom: 32px; }
+  .skills-cat-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .skills-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    font-size: 12px; padding: 6px 14px;
+    border: 1px solid var(--border); border-radius: 2px;
+    color: var(--text); background: var(--surface2);
+    letter-spacing: 0.04em;
+  }
+  .skill-tag.gold { border-color: var(--gold-dim); color: var(--gold-light); }
+
+  /* ── EXPERIENCE ── */
+  #experience { border-top: 1px solid var(--border2); }
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 1px; background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  }
+  .timeline-item {
+    padding-left: 36px; margin-bottom: 56px; position: relative;
+  }
+  .timeline-dot {
+    position: absolute; left: -4px; top: 8px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--bg);
+  }
+  .timeline-meta {
+    font-size: 12px; letter-spacing: 0.08em; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .timeline-company { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
+  .timeline-points { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .timeline-points li {
+    font-size: 14px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.7;
+  }
+  .timeline-points li::before { content: '→'; position: absolute; left: 0; color: var(--gold-dim); font-size: 12px; top: 2px; }
+  .highlight { color: var(--gold-light); font-weight: 500; }
+
+  /* ── WORK / CONTENT ── */
+  #work { background: var(--surface); border-top: 1px solid var(--border2); }
+  .work-intro { color: var(--muted); font-size: 16px; max-width: 620px; margin-bottom: 56px; line-height: 1.8; }
+  .work-categories { display: flex; flex-direction: column; gap: 56px; }
+  .work-cat-title {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); border-left: 2px solid var(--gold-dim);
+    padding-left: 14px; margin-bottom: 24px;
+  }
+  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .work-card {
+    background: var(--surface2); border: 1px solid var(--border2);
+    border-radius: 4px; padding: 24px 22px;
+    text-decoration: none; color: inherit;
+    display: block; transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    position: relative; overflow: hidden;
+  }
+  .work-card::after {
+    content: '↗'; position: absolute; top: 16px; right: 18px;
+    font-size: 14px; color: var(--gold-dim); transition: color 0.25s;
+  }
+  .work-card:hover { border-color: var(--gold-dim); background: #1c1c22; transform: translateY(-2px); }
+  .work-card:hover::after { color: var(--gold); }
+  .card-type { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 10px; }
+  .card-title { font-size: 15px; font-weight: 400; line-height: 1.45; color: var(--text); margin-bottom: 8px; }
+  .card-date { font-size: 12px; color: var(--muted); }
+
+  /* LinkedIn posts grid */
+  .li-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .li-card {
+    background: var(--surface2); border: 1px solid var(--border2); border-radius: 4px;
+    padding: 20px 18px;
+    text-decoration: none; color: inherit; display: block;
+    transition: border-color 0.25s, transform 0.2s;
+    position: relative;
+  }
+  .li-card:hover { border-color: var(--gold-dim); transform: translateY(-2px); }
+  .li-card::after { content: '↗'; position: absolute; top: 14px; right: 14px; font-size: 13px; color: var(--gold-dim); }
+  .li-icon { font-size: 22px; margin-bottom: 12px; }
+  .li-title { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+  /* ── CERTIFICATIONS ── */
+  #certs { border-top: 1px solid var(--border2); }
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+  .cert-card {
+    background: var(--surface); border: 1px solid var(--border2); border-radius: 4px;
+    padding: 28px 24px;
+  }
+  .cert-issuer { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .cert-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 8px; }
+  .cert-date { font-size: 12px; color: var(--muted); }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--surface); border-top: 1px solid var(--border2); }
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .edu-card {
+    background: var(--surface2); border: 1px solid var(--border2); border-radius: 4px;
+    padding: 28px 24px;
+  }
+  .edu-period { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin-bottom: 6px; }
+  .edu-inst { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+  .edu-grade {
+    display: inline-block; font-size: 12px; padding: 4px 12px;
+    background: rgba(201,168,76,0.1); color: var(--gold);
+    border: 1px solid var(--border); border-radius: 2px;
+  }
+
+  /* ── CONTACT ── */
+  #contact { border-top: 1px solid var(--border2); text-align: center; }
+  .contact-tagline { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--muted); margin-bottom: 48px; }
+  .contact-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--muted); text-decoration: none;
+    border: 1px solid var(--border2); padding: 14px 24px; border-radius: 2px;
+    transition: color 0.25s, border-color 0.25s;
+  }
+  .contact-link:hover { color: var(--gold-light); border-color: var(--gold-dim); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 32px 48px;
+    border-top: 1px solid var(--border2);
+    font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
+  }
+
+  /* animations */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 18px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    section { padding: 72px 24px; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hero-stats { grid-template-columns: 1fr; }
+    .stat-num { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">MEA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <span class="hero-tag">Digital Marketing Portfolio</span>
+      <h1>Md Ehtesham <em>Alam</em></h1>
+      <p class="hero-desc">Digital Marketing Executive specialising in SEO, paid advertising, and content strategy — helping brands grow their online presence through data-driven campaigns.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn-primary">View My Work</a>
+        <a href="mailto:alamehtesham6789@gmail.com" class="btn-outline">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hero-stats fade-in">
+      <div class="stat-box">
+        <div class="stat-num">50K+</div>
+        <div class="stat-label">Reach in a single Meta Ads campaign</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3–4%</div>
+        <div class="stat-label">CTR achieved on Meta Ads</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years of marketing experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Blogs &amp; articles published</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-in">
+        <div class="section-label">About Me</div>
+        <h2>Building brands through <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold-light)">purposeful</em> digital strategy</h2>
+        <div class="section-line"></div>
+        <p>I'm a Digital Marketing Executive based in Patna, Bihar, with hands-on experience across SEO, social media management, content creation, and paid advertising. I have worked with companies in the clean energy sector and ed-tech space.</p>
+        <p>At Parhelion Energy, I managed their entire digital footprint — from ranking their website on Google to writing long-form technical content on Medium and running Meta Ads that reached over 50,000 people. I believe marketing is most powerful when creativity meets data.</p>
+        <p>I hold a BBA from Patna University (79%) and am Google-certified in Digital Marketing Fundamentals.</p>
+        <div class="about-contact">
+          <div class="contact-item"><span class="contact-dot"></span>📍 Patna, Bihar, India</div>
+          <div class="contact-item"><span class="contact-dot"></span>📞 <a href="tel:+917454812854">+91 7454812854</a></div>
+          <div class="contact-item"><span class="contact-dot"></span>✉️ <a href="mailto:alamehtesham6789@gmail.com">alamehtesham6789@gmail.com</a></div>
+          <div class="contact-item"><span class="contact-dot"></span>🔗 <a href="https://www.linkedin.com/in/md-ehtesham-alam10" target="_blank" rel="noopener">linkedin.com/in/md-ehtesham-alam10</a></div>
+        </div>
+      </div>
+      <div class="skills-panel fade-in">
+        <div class="skills-cat">
+          <div class="skills-cat-title">SEO &amp; Analytics</div>
+          <div class="skills-list">
+            <span class="skill-tag gold">On-Page SEO</span>
+            <span class="skill-tag gold">Off-Page SEO</span>
+            <span class="skill-tag gold">Keyword Research</span>
+            <span class="skill-tag gold">Google Search Console</span>
+            <span class="skill-tag gold">SEMrush</span>
+            <span class="skill-tag gold">Google Analytics</span>
+          </div>
+        </div>
+        <div class="skills-cat">
+          <div class="skills-cat-title">Paid Advertising</div>
+          <div class="skills-list">
+            <span class="skill-tag gold">Meta Ads</span>
+            <span class="skill-tag gold">Campaign Setup &amp; Monitoring</span>
+            <span class="skill-tag gold">Lead Generation</span>
+            <span class="skill-tag gold">Brand Awareness Campaigns</span>
+          </div>
+        </div>
+        <div class="skills-cat">
+          <div class="skills-cat-title">Content &amp; Social Media</div>
+          <div class="skills-list">
+            <span class="skill-tag">LinkedIn Marketing</span>
+            <span class="skill-tag">Instagram &amp; Facebook</span>
+            <span class="skill-tag">Content Calendar</span>
+            <span class="skill-tag">SEO-Friendly Writing</span>
+            <span class="skill-tag">Blog &amp; Article Writing</span>
+            <span class="skill-tag">Canva</span>
+          </div>
+        </div>
+        <div class="skills-cat">
+          <div class="skills-cat-title">Tools &amp; Platforms</div>
+          <div class="skills-list">
+            <span class="skill-tag">WordPress</span>
+            <span class="skill-tag">Meta Ads Manager</span>
+            <span class="skill-tag">Google My Business</span>
+            <span class="skill-tag">Medium</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-label">Career Journey</div>
+    <h2>Professional Experience</h2>
+    <div class="section-line"></div>
+    <div class="timeline">
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">July 2024 — October 2025</div>
+        <div class="timeline-role">Digital Marketing Executive</div>
+        <div class="timeline-company">Parhelion Energy Pvt. Ltd., Patna, Bihar</div>
+        <ul class="timeline-points">
+          <li>Improved website rankings through <span class="highlight">on-page and off-page SEO</span> for targeted keywords.</li>
+          <li>Managed <span class="highlight">Instagram, Facebook, and LinkedIn</span> accounts with regular content and campaigns.</li>
+          <li>Planned and executed <span class="highlight">Meta Ads campaigns</span> for brand awareness and conversions.</li>
+          <li>Reached over <span class="highlight">50,000 people</span> in a single Meta Ads campaign with a <span class="highlight">3–4% CTR</span>.</li>
+          <li>Created content for blogs, articles, landing pages, and social media to engage the audience.</li>
+          <li>Monitored performance using <span class="highlight">Google Search Console</span> and Meta Ads Manager to optimise results.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">February 2024 — April 2024</div>
+        <div class="timeline-role">Digital Marketing Intern</div>
+        <div class="timeline-company">Skylab SEO, Patna, Bihar</div>
+        <ul class="timeline-points">
+          <li>Developed a <span class="highlight">content strategy</span> to improve search engine performance.</li>
+          <li>Monitored key website metrics including page loading speed, uptime, and server resources.</li>
+          <li>Created <span class="highlight">SEO-friendly pages and blog posts</span>, optimising titles, descriptions, and keywords.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">September 2022 — November 2022</div>
+        <div class="timeline-role">Growth Marketing Intern</div>
+        <div class="timeline-company">Gurucool.xyz — Ed-tech Startup, Patna, Bihar</div>
+        <ul class="timeline-points">
+          <li>Developed and implemented <span class="highlight">marketing campaigns</span> to increase brand awareness and engagement.</li>
+          <li>Conducted <span class="highlight">market research</span> to identify target audiences and craft messaging.</li>
+          <li>Coordinated with internal teams for timely delivery of promotional materials.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">June 2021 — August 2021</div>
+        <div class="timeline-role">Student Partnership — Digital Marketing</div>
+        <div class="timeline-company">Internshala, Patna, Bihar</div>
+        <ul class="timeline-points">
+          <li>Promoted Internshala internships and training programs among college students.</li>
+          <li>Coordinated with the Internshala team for campus campaigns and activities.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-label">Portfolio</div>
+    <h2>Content &amp; Campaigns</h2>
+    <div class="section-line"></div>
+    <p class="work-intro">A selection of blogs, Medium articles, and LinkedIn carousels I created for Parhelion Energy — covering solar technology, energy investment, and clean energy policy. Click any card to view the live content.</p>
+
+    <div class="work-categories">
+
+      <!-- BLOGS -->
+      <div class="fade-in">
+        <div class="work-cat-title">Website Blogs — parhelionenergy.com</div>
+        <div class="cards-grid">
+          <a class="work-card" href="https://parhelionenergy.com/transparent-solar-windows-india-future/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">Transparent Solar Windows in India: Future of Clean Energy (2025)</div>
+            <div class="card-date">November 2025</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.com/best-solar-company-in-bihar-making-solar-affordable-and-reliable/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">Best Solar Company in Bihar: Making Solar Affordable and Reliable</div>
+            <div class="card-date">April 2025</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.com/are-you-ready-to-earn-money-by-selling-solar-energy/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">Are You Ready to Earn Money by Selling Solar Energy?</div>
+            <div class="card-date">September 2024</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.com/how-solar-energy-can-end-electricity-issues-in-rural-bihar/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">How Solar Energy Can End Electricity Issues in Rural Bihar</div>
+            <div class="card-date">September 2024</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.com/how-to-choose-the-best-solar-panels-for-your-home-in-bihar/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">How to Choose the Best Solar Panels for Your Home in Bihar</div>
+            <div class="card-date">September 2024</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.com/common-misconceptions-about-solar-energy/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">Common Misconceptions About Solar Energy</div>
+            <div class="card-date">September 2024</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.com/blogs/" target="_blank" rel="noopener">
+            <div class="card-type">Blog</div>
+            <div class="card-title">View All Blogs on parhelionenergy.com →</div>
+            <div class="card-date">Full Blog Archive</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- MEDIUM ARTICLES -->
+      <div class="fade-in">
+        <div class="work-cat-title">Medium Articles — Thought Leadership</div>
+        <div class="cards-grid">
+          <a class="work-card" href="https://parhelionenergy.medium.com/5-solar-technologies-that-will-change-india-by-2030-6e3101e3b183" target="_blank" rel="noopener">
+            <div class="card-type">Article · Medium</div>
+            <div class="card-title">5 Solar Technologies That Will Change India by 2030</div>
+            <div class="card-date">October 2025</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.medium.com/indias-electricity-consumption-breakdown-and-where-solar-can-make-the-biggest-impact-869ebad5acef" target="_blank" rel="noopener">
+            <div class="card-type">Article · Medium</div>
+            <div class="card-title">India's Electricity Consumption Breakdown — And Where Solar Can Make the Biggest Impact</div>
+            <div class="card-date">October 2025</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.medium.com/green-hydrogen-solar-powering-indias-next-energy-frontier-58259657a24c" target="_blank" rel="noopener">
+            <div class="card-type">Article · Medium</div>
+            <div class="card-title">Green Hydrogen &amp; Solar: Powering India's Next Energy Frontier</div>
+            <div class="card-date">October 2025</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.medium.com/perovskite-solar-technology-the-30-efficiency-revolution-61d82a26e13c" target="_blank" rel="noopener">
+            <div class="card-type">Article · Medium</div>
+            <div class="card-title">Perovskite Solar Technology: The 30%+ Efficiency Revolution</div>
+            <div class="card-date">October 2025</div>
+          </a>
+          <a class="work-card" href="https://parhelionenergy.medium.com/" target="_blank" rel="noopener">
+            <div class="card-type">Article · Medium</div>
+            <div class="card-title">View All Articles on Medium →</div>
+            <div class="card-date">Full Archive</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- LINKEDIN CAROUSELS -->
+      <div class="fade-in">
+        <div class="work-cat-title">LinkedIn Carousels — Social Content Strategy</div>
+        <div class="li-grid">
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_why-solar-is-the-future-of-energy-activity-7388907439342927872-f3EM" target="_blank" rel="noopener">
+            <div class="li-icon">☀️</div>
+            <div class="li-title">Why Solar is the Future of Energy</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_22-trillion-is-fueling-a-clean-energy-activity-7384570079318937600-NlLd" target="_blank" rel="noopener">
+            <div class="li-icon">💰</div>
+            <div class="li-title">$22 Trillion is Fueling a Clean Energy Revolution</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_solar-vs-gold-vs-fd-the-5-lakh-investment-activity-7381308581654151168-X4Io" target="_blank" rel="noopener">
+            <div class="li-icon">📊</div>
+            <div class="li-title">Solar vs Gold vs FD: The ₹5 Lakh Investment Comparison</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_carboncredits-solarenergy-parhelionenergy-activity-7380946389167484928-GRHr" target="_blank" rel="noopener">
+            <div class="li-icon">🌱</div>
+            <div class="li-title">Carbon Credits &amp; Solar Energy Explained</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_india-consumes-1694-billion-units-of-electricity-activity-7378409479324860417-SOLm" target="_blank" rel="noopener">
+            <div class="li-icon">⚡</div>
+            <div class="li-title">India Consumes 1,694 Billion Units of Electricity — Where Does Solar Fit?</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_top-5-solar-projects-in-the-world-activity-7375147975783776256-NU0j" target="_blank" rel="noopener">
+            <div class="li-icon">🏗️</div>
+            <div class="li-title">Top 5 Solar Projects in the World</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/posts/parhelionenergy_solar-just-got-20-cheaper-with-new-gst-reforms-activity-7372252721963421696-XOJN" target="_blank" rel="noopener">
+            <div class="li-icon">📉</div>
+            <div class="li-title">Solar Just Got 20% Cheaper with New GST Reforms</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/company/parhelionenergy/" target="_blank" rel="noopener">
+            <div class="li-icon">🔗</div>
+            <div class="li-title">View All Campaigns on LinkedIn →</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- IMAGE POSTS -->
+      <div class="fade-in">
+        <div class="work-cat-title">LinkedIn Image Posts &amp; Brand Content</div>
+        <div class="li-grid">
+          <a class="li-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7392871007386087424" target="_blank" rel="noopener">
+            <div class="li-icon">🖼️</div>
+            <div class="li-title">LinkedIn Image Post — Brand Campaign</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/feed/update/urn:li:activity:7376959934028148736" target="_blank" rel="noopener">
+            <div class="li-icon">🖼️</div>
+            <div class="li-title">LinkedIn Image Post — Awareness Content</div>
+          </a>
+          <a class="li-card" href="https://www.linkedin.com/company/parhelionenergy/" target="_blank" rel="noopener">
+            <div class="li-icon">🔗</div>
+            <div class="li-title">View Full LinkedIn Page for More Posts →</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-inner">
+    <div class="section-label">Credentials</div>
+    <h2>Certifications</h2>
+    <div class="section-line"></div>
+    <div class="certs-grid">
+      <div class="cert-card fade-in">
+        <div class="cert-issuer">Google · Skillshop</div>
+        <div class="cert-name">Fundamentals of Digital Marketing</div>
+        <div class="cert-date">December 2024</div>
+      </div>
+      <div class="cert-card fade-in">
+        <div class="cert-issuer">Great Learning</div>
+        <div class="cert-name">Marketing Analytics</div>
+        <div class="cert-date">August 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">Academic Background</div>
+    <h2>Education</h2>
+    <div class="section-line"></div>
+    <div class="edu-grid">
+      <div class="edu-card fade-in">
+        <div class="edu-period">Nov 2020 — Jul 2023</div>
+        <div class="edu-degree">Bachelor of Business Administration (BBA)</div>
+        <div class="edu-inst">Patna University, Bihar</div>
+        <span class="edu-grade">79%</span>
+        <div style="margin-top:14px;font-size:13px;color:var(--muted);line-height:1.7;">
+          Marketing Management · Customer Relationship Management · Business Mathematics · Computer Applications
+        </div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-period">Apr 2017 — May 2019</div>
+        <div class="edu-degree">HSC in Science</div>
+        <div class="edu-inst">Neehar Meera National Senior Secondary School, Aligarh, UP</div>
+        <span class="edu-grade">89%</span>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-period">Apr 2005 — Mar 2017</div>
+        <div class="edu-degree">SSC in Science</div>
+        <div class="edu-inst">Jean Paul's High School, Ara, Bihar</div>
+        <span class="edu-grade">93%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Let's Connect</div>
+    <h2>Open to Opportunities</h2>
+    <div class="section-line" style="margin: 0 auto 32px;"></div>
+    <p class="contact-tagline">— Available for full-time roles in digital marketing —</p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:alamehtesham6789@gmail.com">
+        ✉️ alamehtesham6789@gmail.com
+      </a>
+      <a class="contact-link" href="tel:+917454812854">
+        📞 +91 7454812854
+      </a>
+      <a class="contact-link" href="https://www.linkedin.com/in/md-ehtesham-alam10" target="_blank" rel="noopener">
+        🔗 LinkedIn Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Md Ehtesham Alam &nbsp;·&nbsp; Digital Marketing Executive &nbsp;·&nbsp; Patna, Bihar</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
